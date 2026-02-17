@@ -13,19 +13,18 @@ void Simulation::run() {
 
     // loop on time. with while time < T, time += dt;
 
-    auto A = equation->assembleA(discreteSpace);
+    auto A = equation->assembleStiffMatrix(discreteSpace);
     auto b = equation->assembleb(discreteSpace);
     // changer A et méthod assembleA en assembleStiffMatrix.
-    // construction mass matrix for step.
-    // appel de step(StiffMatrix, b, MassMatrix) pour result.
-    // a voir... comment agencer ca.
+    
 
     Eigen::VectorXd x = solver->solve(A.toDense(), b);
-    // modifire le .toDense().
+    // modifier le .toDense si l'o veut qu ca reste sparse utiliser bonn méthode.
 
     // method pour écrire 
     for (auto& const writer: writerList) {
         writer->write(); // préciser les arguments du write.
+        // devrait prndre en argument le temps, et la solution.
     }
 }
 

@@ -1,7 +1,10 @@
 #pragma once
+#include <array>
+
+template<size_t dim>
 
 struct Node {
     int id;
-    double x, y;
+    std::array<double, dim> coords;
 };
 

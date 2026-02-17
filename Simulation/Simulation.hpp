@@ -24,11 +24,13 @@ public:
     ~Simulation() = default;
 
     void run();
-    // argument time, initConditions. à réfléchir. 
+    
 
 
     // ajout méthode cas stable du/dt = 0.
 };
+
+// ajout condition initiale. 
 
 
 

@@ -1,14 +1,13 @@
 #include "Mesh.hpp"
 #include "Element.hpp"
 
-// classe abstraite pour fonctions p1, ... p2, .. , pn
+// classe interface pour fonctions p1, ... p2, .. , pn
 
 class BasisFunction {
     private:
-
+        // localDof ???
     public:
         // constructeur?
-
         // destructeur
         ~BasisFunction() = default;
         // methods 
@@ -19,9 +18,9 @@ class BasisFunction {
         std::array<double,2> computeGrad(const std::array<double,2>& x); // ) corriger encore 
         // méthode de quadrature pour intégration??? 
 
-
-
+        // localDof
+        // 
+        
+        //
 };
-
-// à inclure dans Forme Linéaire et Bilinéaire dans fonctions assemblagle, car assemblage dépend des fnctions de bases.
 

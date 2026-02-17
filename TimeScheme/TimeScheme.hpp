@@ -1,15 +1,12 @@
-#include "TimeScheme.hpp"
+#include "Equation.hpp"
 
-class Euler : public TimeScheme {
-    private:
 
+class TimeScheme {
     public:
-        // constructeur
-
-        // destructeur
-
-        void integrator(dt);
-
-        // time matrix ... assemblage Massmatrix a prendr via massMatrix, 
+        // destructor
+        ~TimeScheme() = default;
+        
+        virtual void step(Equation equation, double dt);
 };
 
+// changer void en vecteur 

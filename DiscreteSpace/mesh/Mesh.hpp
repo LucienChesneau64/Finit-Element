@@ -7,7 +7,7 @@
 class Mesh {
 private:
     std::vector<Node> nodes;
-    std::vector<Element> elements;
+    std::vector<Element<dim>> elements;
 
 public:
     Mesh() = default;

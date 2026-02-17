@@ -1,9 +1,9 @@
 #include "Element.hpp"
 
-Element::Element(const std::array<int,3>& ids)
+Element::Element(const std::array<int,dim+1>& ids)
     : nodeIds(ids) {}
 
-const std::array<int,3>& Element::getNodeIds() const {
+const std::array<int,dim+1>& Element::getNodeIds() const {
     return nodeIds;
 }
 
@@ -18,6 +18,7 @@ double Element::computeArea(const std::vector<Nodes>& allNodes) const {
 
     return area;
 }
+
 
 
 

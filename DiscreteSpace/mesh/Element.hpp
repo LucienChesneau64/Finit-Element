@@ -2,14 +2,16 @@
 #include <vector>
 #include "Nodes.hpp"
 
+template<size_t dim>
+
 class Element {
 private:
-    std::array<int,3> nodeIds;
+    std::array<int,dim+1> nodeIds;
 
 public:
-    explicit Element(const std::array<int,3>& ids);
+    explicit Element(const std::array<int,dim+1>& ids);
 
-    const std::array<int,3>& getNodeIds() const;
+    const std::array<int,dim+1>& getNodeIds() const;
 
     // area 
     double computeArea(const std::vector<Nodes>& allNodes) const;

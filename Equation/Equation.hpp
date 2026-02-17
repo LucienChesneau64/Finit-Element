@@ -11,15 +11,15 @@ class Equation {
 private:
     std::vector<std::shared_ptr<BilinearForm>> bilinearForms;
     std::vector<std::shared_ptr<LinearForm>> linearForms;
-
+    // a ajouter source forme 
+    // les conditions au bord BoundaryConditions
+    // non linearForm
 public:
     explicit Equation();
 
-    Eigen::SparseMatrix<double> assembleA(const DiscreteSpace& discreteSpace);
+    Eigen::SparseMatrix<double> assembleStiffMatrix(const DiscreteSpace& discreteSpace);
     Eigen::VectorXd assembleb(const DiscreteSpace& discreteSpace);
+    // methods 
 };
-
-// changer equation qui n prend plus en membre mesh et IndexHandler.
-// mais assmbleA et assembleB prend en entrée DiscreteSpace directmeent
 
 

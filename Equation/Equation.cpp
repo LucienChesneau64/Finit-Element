@@ -2,8 +2,7 @@
 
 Equation::Equation() {};
 
-Eigen::SparseMatrix<double> Equation::assembleA(const DiscreteSpace& discreteSpace) {
-    // get dof and mesh.
+Eigen::SparseMatrix<double> Equation::assembleStiffMatrix(const DiscreteSpace& discreteSpace) {
     auto dof = discreteSpace.getDof();
     Eigen::SparseMatrix<double> A(dof->nIndexs(), dof->nIndexs());
     for (const auto& bf : bilinearForms) {
@@ -11,11 +10,9 @@ Eigen::SparseMatrix<double> Equation::assembleA(const DiscreteSpace& discreteSpa
     }
     return A;
 }
-
-// prendre en entrée dans assemblageA et assemblageb classe fonction de base
+// changer assembleA en assembleStiffnesMatrix()
 
 Eigen::VectorXd Equation::assembleb(const DiscreteSpace& discreteSpace) {
-    // get dof and mesh.
     auto dof = discreteSpace.getDof();
     Eigen::VectorXd b = Eigen::VectorXd::Zero(dof->nIndexs());
     for (const auto& lf : linearForms) {
@@ -23,4 +20,7 @@ Eigen::VectorXd Equation::assembleb(const DiscreteSpace& discreteSpace) {
     }
     return b;
 }
+
+// ajout de assembleMassMatrix -> fait appel a classe hérité de linearform.hpp
+// step prendra StiffMatrix, MassMatrix en argument avec 
 
