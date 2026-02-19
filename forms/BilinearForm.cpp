@@ -1,13 +1,13 @@
 #include "BilinearForm.hpp"
 
-void BilinearForm::assemble(const DiscreteSpace& discreteSpace,
+void BilinearForm::assemble(const DiscreteSpace<dim>& discreteSpace,
                             Eigen::SparseMatrix<double>& A) const {
 
     // getMesh, getDof, getBasisFunction
     
-    auto mesh = discreteSpace.getMesh();
-    auto index = discreteSpace.getDof();
-    auto basisFunction = discreteSpace.getBasisFunction();
+    auto& mesh = discreteSpace.getMesh();
+    auto& index = discreteSpace.getDof();
+    auto& basisFunction = discreteSpace.getBasisFunction();
 
     for (const auto& elem : mesh->getElements()) {
         const auto& ids = elem.getNodeIds();

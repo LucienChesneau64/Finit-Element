@@ -1,6 +1,6 @@
 #include "LinearForm.hpp"
 
-void LinearForm::assemble(const DiscreteSpace& discreteSpace,
+void LinearForm::assemble(const DiscreteSpace<dim>& discreteSpace,
                           Eigen::VectorXd& b) const {
     auto& mesh = discreteSpace.getMesh();
     auto& dof = discreteSpace.getDof();

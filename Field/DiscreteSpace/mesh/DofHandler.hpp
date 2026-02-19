@@ -2,16 +2,13 @@
 #include <unordered_map>
 #include "Mesh.hpp"
 
-
-template <size_t dim>
-
 class DofHandler {
 private:
     std::unordered_map<int,int> nodeToDof;
     int nDofs_ = 0;
 
 public:
-    void parseDofHandler(const Mesh<dim>& mesh, const Field field);
+    void distributeDofHandler(const Mesh& mesh);
 
     int dof(int nodeId) const;
     int nDofs() const;

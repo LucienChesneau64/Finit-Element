@@ -7,16 +7,17 @@
 
 // ajout de TimeScheme en argument;
 
+template<size_t dim>
 class Simulation {
 private:
     std::shared_ptr<Equation> equation;
     std::shared_ptr<Solver> solver;
-    std::shared_ptr<DiscreteSpace> discreteSpace;
+    std::shared_ptr<DiscreteSpace<dim>> discreteSpace;
     std::vector<std::shared_ptr<ResultWriter>> writerList;
 public:
     Simulation(std::shared_ptr<Equation> eq,
                std::shared_ptr<Solver> sol,
-               std::shared_ptr<DiscreteSpace> discretespace_
+               std::shared_ptr<DiscreteSpace<dim>> discretespace_
                std::vector<std::shared_ptr<ResultWriter>> writerList_
             );
 

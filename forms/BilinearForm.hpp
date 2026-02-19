@@ -2,18 +2,19 @@
 #include <Eigen/Sparse>
 #include "DiscreteSpace.hpp"
 
+
+template<siz_t dim>
+
 class BilinearForm {
 public:
     virtual ~BilinearForm() = default;
 
-    void assemble(const DiscreteSpace&,
+    void assemble(const DiscreteSpace<dim>&,
                   Eigen::SparseMatrix<double>& A) const;
 
-    virtual double localContribution(const DiscreteSpace& discreteSpace, const Element& e,
+    virtual double localContribution(const DiscreteSpace<dim>& discreteSpace, const Element<dim>& e,
                                      int local_i,
                                      int local_j) const = 0;
 };
 
-// créer la classe DiscreteSpace qui représente Vh.
-// au lieu de prendre en entrée Mesh, indexHandler, et BasisFunction -> DiscreteSpace.
 

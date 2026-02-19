@@ -7,6 +7,8 @@
 #include "LinearForm.hpp"
 #include "DiscreteSpace.hpp"
 
+
+
 class Equation {
 private:
     std::vector<std::shared_ptr<BilinearForm>> bilinearForms;

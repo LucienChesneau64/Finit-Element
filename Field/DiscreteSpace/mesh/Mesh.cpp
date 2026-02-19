@@ -8,11 +8,11 @@ void Mesh::loadFromFile(const std::string& path) {
     // TODO: gmsh / mesh reader
 }
 
-const std::vector<Node<dim>>& Mesh::getNodes() const {
+const std::vector<Node>& Mesh::getNodes() const {
     return nodes;
 }
 
-const std::vector<Element<dim>>& Mesh::getElements() const {
+const std::vector<Element>& Mesh::getElements() const {
     return elements;
 }
 
