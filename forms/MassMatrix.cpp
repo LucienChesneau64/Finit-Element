@@ -9,3 +9,5 @@ double MassMatrix::localContribution(
         // coder la contribution local... -> integral sur element de phi_i * phi_j . avec phi fonctions de bases.
         return contribution;
     }
+
+    

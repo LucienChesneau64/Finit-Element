@@ -1,28 +1,24 @@
 #include "Mesh.hpp"
 #include "Element.hpp"
 
-// classe interface pour fonctions p1, ... p2, .. , pn
+// classe interface pour fonctions p1, ... p2, .. , pn, p0.
 
 template <size_t dim>
 
-class BasisFunction {
-    private:
-        // localDof ???
-    public:
-        // constructeur?
-        // destructeur
-        ~BasisFunction() = default;
-        // methods 
+class BasisFunction
+{
+private:
+    int nDofPerNodes;
+public:
+    // destructeur
+    ~BasisFunction() = default;
+    // methods
 
-        // calcul de la valeur au point
-        double computeValue(std::array<double,dim> x); // à corriger 
-        // calcul du gradient 
-        std::array<double,dim> computeGrad(const std::array<double,2>& dim); // ) corriger encore 
-        // méthode de quadrature pour intégration??? 
+    // évaluation du gradient en un point.
+    virtual const double value(const std::array<double, dim>& x, const Element& elem) = 0; // pour évaluer le point avec son élément correspondant.
+    // évaluation du gradient en un point.
+    virtual const std::array<double, dim> gradValue(const std::array<double, dim>& x, elem) = 0; // classe virtuel pour chaque fonction de base.
 
-        // localDof
-        // 
-        
-        //
+    // renvoie le nombre de degrés de liberté nécessaire. pour plus tard.
+    const int getnDofPerNodes() const;
 };
-

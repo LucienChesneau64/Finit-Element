@@ -1,12 +1,16 @@
 #include "Equation.hpp"
+#include "MultiField.hpp"
+#include "State.hpp"
 
 
 class TimeScheme {
+    private:
+        double dt;
     public:
-        // destructor
         ~TimeScheme() = default;
         
-        virtual void step(Equation equation, double dt);
+        virtual void step(const Equation& equation, const MultiField& multifield, State& currentState) = 0;
+
+        double getDt();
 };
 
-// changer void en vecteur 

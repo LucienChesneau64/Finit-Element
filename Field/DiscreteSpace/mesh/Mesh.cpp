@@ -2,6 +2,15 @@
 
 Mesh::Mesh(const std::string& path) {
     loadFromFile(path);
+    calculatenNodes();
+}
+
+void Mesh::calculatenNodes() [
+    // calculate Number of Nodes in mesh.
+]
+
+int Mesh::getnNodes() {
+    return nNodes;
 }
 
 void Mesh::loadFromFile(const std::string& path) {
@@ -15,4 +24,5 @@ const std::vector<Node>& Mesh::getNodes() const {
 const std::vector<Element>& Mesh::getElements() const {
     return elements;
 }
+
 

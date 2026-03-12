@@ -4,6 +4,7 @@
 class Euler : public TimeScheme {
     private:
         std::unique_ptr<Solver>;
+        
     public:
         // constructeur
 

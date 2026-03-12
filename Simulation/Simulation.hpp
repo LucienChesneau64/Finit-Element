@@ -3,38 +3,49 @@
 #include <vector>
 #include "Equation.hpp"
 #include "Solver.hpp"
+#include "MultiField.hpp"
+#include "State.hpp"
 
-
-// ajout de TimeScheme en argument;
-
-template<size_t dim>
-class Simulation {
+template <size_t dim>
+class Simulation
+{
 private:
+    State currentState;
+    State nextState;
     std::shared_ptr<Equation> equation;
-    std::shared_ptr<Solver> solver;
-    std::shared_ptr<DiscreteSpace<dim>> discreteSpace;
-    std::vector<std::shared_ptr<ResultWriter>> writerList;
+    std::shared_ptr<MultiField<dim>> MultiField;
+    std::unique_ptr<TimeScheme> timeScheme;
+
 public:
-    Simulation(std::shared_ptr<Equation> eq,
-               std::shared_ptr<Solver> sol,
-               std::shared_ptr<DiscreteSpace<dim>> discretespace_
-               std::vector<std::shared_ptr<ResultWriter>> writerList_
-            );
+    Simulation(
+        State currentState;
+        std::shared_ptr<Equation> eq,
+        std::shared_ptr<MultiField<dim>> multiField_,
+        std::unique_ptr<TimeScheme> timeScheme,
+
+                       writerList_); // 
 
     // destructeur
     ~Simulation() = default;
 
-    void run();
-    
+    void run(double T_end, std::vector<std::shared_ptr<ResultWriter>> writerList);
+    // choix des paramètres TimeScheme.
+    // scheme en choix aussi. scheme qui prend en argument lors de sa construction un solver. 
 
 
-    // ajout méthode cas stable du/dt = 0.
+    void stable();
+    // du/dt = 0.
+    // prend en argument un solver.
 };
 
-// ajout condition initiale. 
 
+// refactoring intégrale de cette fonction, pour ajout multifield, globalDofHandler.
 
+// repenser quoi mettre en membre privé. 
 
+// parce que on pourrait mettre InitialCondition dans Equation.
+// on pourrait mettre writerList en membre privé.
 
-
-
+// pour moi run() devrait prendre plutot en argument temps T.
+// time scheme devrait prendre en membre privé pas de temps dt. ??? -> moi je dirai que oui.
+// demander a gemini :))))).

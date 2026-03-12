@@ -1,30 +1,43 @@
 #include "Simulation.hpp"
+#include "DofHandler.hpp"
 
 
-// à ajouter TimeScheme.
+Simulation::Simulation(
+    State currentState_;
+    std::shared_ptr<Equation> eq;
+    std::shared_ptr<MultiField<dim>> multiField_);
+        std::unique_ptr<TimeScheme> timeScheme_;
+    : currentState(currentState_), equation(eq), multiField(multiField_), timeScheme(timeScheme_) {}
 
-Simulation::Simulation(std::shared_ptr<Equation> eq,
-                       std::shared_ptr<Solver> sol,
-                       std::shared_ptr<DiscreteSpace> discreteSpace_, 
-                       std::vector<std::shared_ptr<ResultWriter>> writerList_)
-    : equation(eq), solver(sol), discreteSpace(discreteSpace_), writerList(writerList_)  {}
+// demander ce qui est le plus propre, a mettre en membre privé ou en argument d'une methode?
 
-void Simulation::run() {
-
+void Simulation::run(const double T, const ResultWriter& resultWriter) {
+    // T en argument + state pour condition initiale
     // loop on time. with while time < T, time += dt;
+    // use of DofHandler to distribute
 
-    auto A = equation->assembleStiffMatrix(discreteSpace);
-    auto b = equation->assembleb(discreteSpace);
+    auto A = equation->assembleStiffMatrix();
+    auto b = equation->assembleb();
     // changer A et méthod assembleA en assembleStiffMatrix.
     
 
-    Eigen::VectorXd x = solver->solve(A.toDense(), b);
+    //Eigen::VectorXd x = solver->solve(A.toDense(), b);
     // modifier le .toDense si l'o veut qu ca reste sparse utiliser bonn méthode.
 
     // method pour écrire 
+    // réfléchir a la facon dont ca va se faire. coder classe State avant.
     for (auto& const writer: writerList) {
         writer->write(); // préciser les arguments du write.
         // devrait prndre en argument le temps, et la solution.
     }
 }
 
+void Simulation::stable()
+
+// change of discretspace to multifield. 
+// a list of or a struct in fact of different DiscreteSpace.
+// on it, method globalDofhandler to assign all dof of every nodes.
+// then globalDofhandler in assembleGlobalstiffMatrix(field, dof) ?
+// revoir structur architecture AssembleMatrix.
+
+// revoir run. 

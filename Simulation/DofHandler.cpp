@@ -1,13 +1,25 @@
 #include "DofHandler.hpp"
 
-void DofHandler::distributeDofHandler(const Mesh& mesh) {
+template <size_t dim>
+void DofHandler<dim>::distributeDofHandler(const DiscreteSpace<dim>& space) {
 
-} // TODO
+    int nNodes = space.getMesh().getnNodes();
+    
+    this->nDofsPerNode_ = space.getnDofsPerNode(); 
 
-int DofHandler::Dof(int nodeId) const {
-    return 0;} // TODO
+    this->nDofs_ = nNodes * this->nDofsPerNode_;
+    
+    // attribue en mémoire contigue.
 
-int DofHandler::nDofs() const {
-    return nDofs_;
 }
 
+template <size_t dim>
+int DofHandler<dim>::Dof(int nodeId) const {
+    return nodeId * nDofsPerNode_;
+    }
+
+
+template <size_t dim>
+int DofHandler<dim>::Dof(int nodeId, int componentId) const {
+    return (nodeId * nDofsPerNode_) + componentId;
+}
