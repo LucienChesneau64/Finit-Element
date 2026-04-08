@@ -14,6 +14,7 @@ This project is a high-performance **MultiPhysics FEM Engine** written in modern
     * **CSV Metadata** for quantitative error tracking and log-log convergence plotting.
 
 ---
+<img width="547" height="556" alt="dirichlet" src="https://github.com/user-attachments/assets/e765430a-afda-4ef6-b6c5-ae4f89d42164" />
 
 ## Project Architecture
 
@@ -27,8 +28,10 @@ The codebase follows a modular design, allowing you to plug in new physics witho
 
 ---
 
+
 ## Validation & Convergence
-dirichlet.png)
+
+to be done.
 
 ## Installation & Usage
 
