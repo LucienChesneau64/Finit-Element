@@ -28,7 +28,7 @@ The codebase follows a modular design, allowing you to plug in new physics witho
 ---
 
 ## Validation & Convergence
-(build/Screenshot from 2026-04-06 17-44-55.png)
+dirichlet.png)
 
 ## Installation & Usage
 
