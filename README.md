@@ -13,7 +13,7 @@ This project is a high-performance **MultiPhysics FEM Engine** written in modern
     * **Face-ID Management**: Precise control over boundary surfaces using Mesh IDs to assign values (e.g., constant u=1 or custom functions) to specific faces.
 * **Dynamic MultiField Management**: Flexible management of discrete spaces, allowing for the addition of custom fields and degrees of freedom (DoFs) on the fly.
 * **Mathematical Validation (MMS)**: Integrated `Task` system for automated convergence analysis using L1, L2, and L-infinity error norms.
-* **Professional Data Export**: 
+* **Data Export**: 
     * **VTK/XML** format for high-end visualization in **ParaView**.
     * **CSV Metadata** for quantitative error tracking and convergence plotting.
 
